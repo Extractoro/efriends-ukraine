@@ -132,16 +132,6 @@
   background-color: #e4a431;
 }
 
-.info {
-  font-family: "Ubuntu", arial;
-  background-color: #feb737;
-  color: white;
-  width: 94%;
-  padding: 15px;
-  margin-bottom: 15px;
-  border-radius: 13px;
-}
-
 .h4 {
   margin-bottom: 0;
 }
@@ -151,22 +141,17 @@
   text-align: center;
 }
 
-.login {
+.register {
   position: relative;
   color: #feb737;
   text-decoration: none;
 }
 
-.login:hover {
+.register:hover {
   color: #e4a431;
 }
 
-.login:focus {
+.register:focus {
   color: #e4a431;
   top: 1px;
-}
-
-.hr {
-  outline: none;
-  border: 1px solid white;
 }

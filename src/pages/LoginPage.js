@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import RegisterForm from "../components/RegisterForm/RegisterForm";
+import LoginForm from "../components/LoginForm/LoginForm";
 import Footer from "../components/Footer/Footer";
 
-const RegisterPage = () => {
+const LoginPage = () => {
   return (
     <>
       <ContainerL>
-        <RegisterForm />
+        <LoginForm />
         <Image
           src={require("../images/friends.png")}
           alt="friends"
@@ -32,4 +32,4 @@ const Image = styled.img`
   object-fit: cover;
 `;
 
-export default RegisterPage;
+export default LoginPage;

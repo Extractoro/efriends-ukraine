@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const authApi = createApi({
-  reducerPath: "efriends",
+  reducerPath: "authApi",
   baseQuery: fetchBaseQuery({
     baseUrl: "http://localhost:5000",
     prepareHeaders: (headers, { getState }) => {
@@ -43,7 +43,7 @@ export const authApi = createApi({
         method: "POST",
         body,
       }),
-      invalidatesTags: ["auth"],
+      providesTags: ["auth"],
     }),
     currentUser: builder.query({
       query: () => ({

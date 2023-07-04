@@ -5,6 +5,9 @@ import s from "./RegisterForm.module.css";
 import { Loading, Notify } from "notiflix";
 import { useSelector } from "react-redux";
 import { selectIsPending } from "../../redux/auth/authSlice";
+import { MdOutlineEmail } from "react-icons/md";
+import { RiLock2Line } from "react-icons/ri";
+import { AiOutlineUser } from "react-icons/ai";
 
 const RegisterForm = () => {
   const [registerUser] = useRegistrationUserMutation();
@@ -13,7 +16,7 @@ const RegisterForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [show, setShow] = useState(false);
-  const handleShow = () => setShow(!show);
+  const handleClick = () => setShow(!show);
 
   const reset = () => {
     setName("");
@@ -56,74 +59,85 @@ const RegisterForm = () => {
   return (
     <>
       {!isPending && Loading.remove()}
-      <form action="" className={s["form"]} onSubmit={handleSubmit}>
-        <label className={s["label"]}>
-          <p className={s["paragraph"]}>Email</p>
-          <input
-            className={s["input"]}
-            type="email"
-            name="email"
-            placeholder="noname@gmail.com"
-            value={email}
-            onChange={handleChange}
-            required
-          />
-        </label>
+      <div>
+        <h2 className={s["title"]}>Доєднуйся до нас!</h2>
+        <form action="" className={s["form"]} onSubmit={handleSubmit}>
+          <label className={s["modal-form__label"]}>
+            <span className={s["input__wrapper"]}>
+              <input
+                className={s["modal-form__input"]}
+                type="name"
+                name="name"
+                placeholder="Твоє ім'я"
+                value={name}
+                onChange={handleChange}
+                required
+              />
+              <AiOutlineUser className={s["modal__icon"]} />
+            </span>
+          </label>
 
-        <label className={s["label"]}>
-          <p className={s["paragraph"]}>Name</p>
-          <input
-            className={s["input"]}
-            type="name"
-            name="name"
-            placeholder="John Smith"
-            value={name}
-            onChange={handleChange}
-            required
-          />
-        </label>
+          <label className={s["modal-form__label"]}>
+            <span className={s["input__wrapper"]}>
+              <input
+                className={s["modal-form__input"]}
+                type="email"
+                name="email"
+                placeholder="Твоя пошта"
+                value={email}
+                onChange={handleChange}
+                required
+              />
+              <MdOutlineEmail className={s["modal__icon"]} />
+            </span>
+          </label>
 
-        <label className={s["label"]}>
-          <p className={s["paragraph"]}>Password</p>
+          <label className={s["modal-form__label"]}>
+            <span className={s["input__wrapper"]}>
+              <input
+                className={s["modal-form__input"]}
+                onChange={handleChange}
+                type={show ? "text" : "password"}
+                name="password"
+                placeholder="Твій пароль"
+                value={password}
+                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#&*_+-]).{8,24}$"
+                required
+              />
 
-          <div className="div">
-            <input
-              className={s["input-pass"]}
-              onChange={handleChange}
-              type={show ? "text" : "password"}
-              name="password"
-              placeholder="Enter password"
-              value={password}
-              pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[ -/:-@\[-`{-~]).{8,24}$"
-              required
-            />
-            <button
-              type="button"
-              className={s["button-hide"]}
-              onClick={handleShow}
-            >
-              {show ? "Hide" : "Show"}
-            </button>
+              <RiLock2Line className={s["modal__icon"]} />
+
+              <button
+                type="button"
+                className={s["button-hide"]}
+                onClick={handleClick}
+              >
+                {show ? "Сховати" : "Показати"}
+              </button>
+            </span>
+          </label>
+
+          <div className={s["info"]}>
+            Від 8 до 24 символів.
+            <hr className={s["hr"]} />
+            Має містити великі та малі літери, цифру та спеціальний символ.
+            <hr className={s["hr"]} />
+            Дозволені спеціальні символи: !, @, #, &, *, _, +, -
           </div>
-        </label>
 
-        <div className={s["info"]}>
-          8 to 24 characters.
-          <hr />
-          Must include uppercase and lowercase letters, a number and a special
-          character.
-          <hr />
-          Allowed special characters: !, _, -, $
-        </div>
+          <button type="submit" className={s["button"]}>
+            Зареєструватись
+          </button>
 
-        <button type="submit" className={s["button"]}>
-          Register
-        </button>
-
-        <h4 className={s["h4"]}>
-          If you have an account, <NavLink to="/login">login</NavLink>!
-        </h4>
-      </form>
+          <h4 className={s["h4"]}>
+            Якщо у вас є обліковий запис,{" "}
+            <NavLink to="/login" className={s["login"]}>
+              увійдіть
+            </NavLink>
+            !
+          </h4>
+        </form>
+      </div>
       {isPending && Loading.circle()}
     </>
   );
