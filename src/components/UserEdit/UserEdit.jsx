@@ -172,22 +172,13 @@ const UserEdit = () => {
                   />
 
                   <div style={{ display: "flex" }}>
-                    <EditButton>
-                      <NavLink
-                        to="/profile"
-                        exact="true"
-                        style={{ color: "white", textDecoration: "none" }}
-                      >
-                        Cancel
-                      </NavLink>
-                    </EditButton>
-                    <NavLink
+                    <EditButtonCancel
                       to="/profile"
                       exact="true"
                       style={{ color: "white", textDecoration: "none" }}
                     >
                       Cancel
-                    </NavLink>
+                    </EditButtonCancel>
 
                     <EditButton type="submit">Save Profile</EditButton>
                   </div>
@@ -597,7 +588,7 @@ const EditButton = styled.button`
     color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s,
     box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s,
     top 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
-  
+
   margin-top: 10px;
 
   &:hover {
@@ -606,7 +597,39 @@ const EditButton = styled.button`
 
   &:focus {
     top: 1px;
-    background-color: rgb(228, 164, 49);s
+    background-color: rgb(228, 164, 49);
+  }
+`;
+
+const EditButtonCancel = styled(NavLink)`
+  font-family: inherit;
+  position: relative;
+  font-size: 15px;
+  font-weight: 700;
+  color: white;
+  background-color: rgb(254, 183, 55);
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  padding: 10px 20px;
+  margin-right: 15px;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 1px, rgba(0, 0, 0, 0.14) 0px 1px 1px,
+    rgba(0, 0, 0, 0.2) 0px 2px 1px;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s,
+    color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s,
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s,
+    top 250ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
+
+  margin-top: 10px;
+
+  &:hover {
+    background-color: rgb(228, 164, 49);
+  }
+
+  &:focus {
+    top: 1px;
+    background-color: rgb(228, 164, 49);
   }
 `;
 

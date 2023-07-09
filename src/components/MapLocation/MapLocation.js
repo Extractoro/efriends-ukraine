@@ -1,6 +1,6 @@
 import { GoogleMap, MarkerF, useLoadScript } from "@react-google-maps/api";
 import { Loading, Notify } from "notiflix";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Footer from "../Footer/Footer";
 
 const MapLocation = () => {

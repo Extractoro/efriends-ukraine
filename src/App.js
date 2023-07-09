@@ -7,8 +7,8 @@ import HomePage from "./pages/HomePage";
 import Header from "./components/Header/Header";
 import ProfilePage from "./pages/ProfilePage";
 import UserEdit from "./components/UserEdit/UserEdit";
-import MapPage from "./pages/MapPage";
 import MapLocation from "./components/MapLocation/MapLocation";
+import BlogPage from "./pages/BlogPage";
 
 function App() {
   return (
@@ -36,6 +36,10 @@ function App() {
 
         <Route path="/" element={<PrivateRoute />}>
           <Route path="/map" element={<MapLocation />} />
+        </Route>
+
+        <Route path="/" element={<PrivateRoute />}>
+          <Route path="/blog" element={<BlogPage />} />
         </Route>
       </Route>
     </Routes>
