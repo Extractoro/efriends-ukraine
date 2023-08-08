@@ -333,7 +333,6 @@ const Item = styled.li`
   height: 470px;
   background-color: #73727d;
   border-radius: 15px;
-  margin-bottom: 30px;
 
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
     color 250ms cubic-bezier(0.4, 0, 0.2, 1),

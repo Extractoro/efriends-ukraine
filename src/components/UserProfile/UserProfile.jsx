@@ -10,9 +10,17 @@ import {
 import { FiTwitter } from "react-icons/fi";
 import { FaTelegram } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const UserProfile = () => {
   const { data: user, isFetching } = useCurrentUserQuery();
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    if (user !== undefined) {
+      setData(user.user);
+    }
+  }, [user]);
 
   return (
     <>
@@ -20,12 +28,12 @@ const UserProfile = () => {
       <Wrapper>
         <LeftSection>
           <UserCard>
-            {user && (
+            {data && (
               <>
-                <UserPhoto src={user.user.avatarURL} alt="" />
-                <UserName>{user.user.name}</UserName>
-                <UserParagraph>{user.user.about}</UserParagraph>
-                <UserParagraph>{user.user.location}</UserParagraph>
+                <UserPhoto src={data.avatarURL} alt="" />
+                <UserName>{data.name}</UserName>
+                <UserParagraph>{data.about}</UserParagraph>
+                <UserParagraph>{data.location}</UserParagraph>
                 <EditButton to="/profile_edit" exact="true">
                   Edit Profile
                 </EditButton>
@@ -49,8 +57,8 @@ const UserProfile = () => {
                     />
                     Website:
                   </span>{" "}
-                  <UserLink href={user.user.website} target="_blank">
-                    {user.user.website}
+                  <UserLink href={data.website} target="_blank">
+                    {data.website}
                   </UserLink>
                 </UserMedias>
                 <UserMedias>
@@ -63,8 +71,8 @@ const UserProfile = () => {
                     <AiOutlineGithub style={{ marginRight: "10px" }} />
                     GitHub:
                   </span>{" "}
-                  <UserLink href={user.user.github} target="_blank">
-                    {user.user.github}
+                  <UserLink href={data.github} target="_blank">
+                    {data.github}
                   </UserLink>
                 </UserMedias>
                 <UserMedias>
@@ -77,8 +85,8 @@ const UserProfile = () => {
                     <AiOutlineLinkedin style={{ marginRight: "10px" }} />
                     Linkedin:
                   </span>{" "}
-                  <UserLink href={user.user.linkedin} target="_blank">
-                    {user.user.linkedin}
+                  <UserLink href={data.linkedin} target="_blank">
+                    {data.linkedin}
                   </UserLink>
                 </UserMedias>
                 <UserMedias>
@@ -91,8 +99,8 @@ const UserProfile = () => {
                     <AiOutlineFacebook style={{ marginRight: "10px" }} />
                     Facebook:
                   </span>{" "}
-                  <UserLink href={user.user.facebook} target="_blank">
-                    {user.user.facebook}
+                  <UserLink href={data.facebook} target="_blank">
+                    {data.facebook}
                   </UserLink>
                 </UserMedias>
                 <UserMedias>
@@ -105,8 +113,8 @@ const UserProfile = () => {
                     <FiTwitter style={{ marginRight: "10px" }} />
                     Twitter:
                   </span>{" "}
-                  <UserLink href={user.user.twitter} target="_blank">
-                    {user.user.twitter}
+                  <UserLink href={data.twitter} target="_blank">
+                    {data.twitter}
                   </UserLink>
                 </UserMedias>
                 <UserMedias>
@@ -119,8 +127,8 @@ const UserProfile = () => {
                     <FaTelegram style={{ marginRight: "10px" }} />
                     Telegram:
                   </span>{" "}
-                  <UserLink href={user.user.telegram} target="_blank">
-                    {user.user.telegram}
+                  <UserLink href={data.telegram} target="_blank">
+                    {data.telegram}
                   </UserLink>
                 </UserMedias>
               </>
@@ -132,16 +140,16 @@ const UserProfile = () => {
             {user && (
               <>
                 <UserBioParagraph>
-                  <span>Bio:</span> {user.user.bio}
+                  <span>Bio:</span> {data.bio}
                 </UserBioParagraph>
                 <UserBioParagraph>
-                  <span>Email:</span> {user.user.email}
+                  <span>Email:</span> {data.email}
                 </UserBioParagraph>
                 <UserBioParagraph>
-                  <span>Phone:</span> {user.user.phone}
+                  <span>Phone:</span> {data.phone}
                 </UserBioParagraph>
                 <UserBioParagraph>
-                  <span>Subscription:</span> {user.user.subscription}
+                  <span>Subscription:</span> {data.subscription}
                 </UserBioParagraph>
               </>
             )}

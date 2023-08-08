@@ -40,6 +40,7 @@ const Foot = styled.div`
   height: 83px;
   display: flex;
   align-items: center;
+  margin-top: 30px;
 `;
 
 const Wrapper = styled.div`

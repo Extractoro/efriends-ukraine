@@ -16,6 +16,8 @@ import authSlice from "./auth/authSlice";
 import { authApi } from "./auth/authApi";
 import userSlice from "./user/userSlice";
 import { userApi } from "./user/userApi";
+import postSlice from "./posts/postSlice";
+import { postApi } from "./posts/postApi";
 
 const authPersistConfig = {
   key: "auth",
@@ -28,7 +30,9 @@ export const store = configureStore({
     [authApi.reducerPath]: authApi.reducer,
     auth: persistReducer(authPersistConfig, authSlice),
     user: userSlice,
+    post: postSlice,
     [userApi.reducerPath]: userApi.reducer,
+    [postApi.reducerPath]: postApi.reducer,
   },
   middleware: (getDefaultMiddleware) => [
     ...getDefaultMiddleware({
@@ -38,6 +42,7 @@ export const store = configureStore({
     }),
     authApi.middleware,
     userApi.middleware,
+    postApi.middleware,
   ],
   devTools: process.env.NODE_ENV === "development",
 });
